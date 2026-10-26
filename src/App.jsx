@@ -3,7 +3,7 @@ import { useState } from "react";
 function App() {
     // 입력값을 관리하는 state
     const [title, setTitle] = useState(""); // 영화 제목
-    const [genre, setGenre] = useState("액션"); // 장르 (기본값 액션)
+    const [genre, setGenre] = useState(""); // 장르
     const [rating, setRating] = useState("3"); // 별점 (기본값 별점 3점)
 
     // 영화 목록을 관리하는 state (초기 데이터 없음)
@@ -31,7 +31,7 @@ function App() {
 
         // 인풋 값 초기화
         setTitle("");
-        setGenre("액션");
+        setGenre("");
         setRating("3");
     };
 
@@ -88,8 +88,9 @@ function App() {
                     >
                         <option value="액션">액션</option>
                         <option value="드라마">드라마</option>
-                        <option value="SF">SF</option>
                         <option value="코미디">코미디</option>
+                        <option value="SF">SF</option>
+                        <option value="공포">공포</option>
                     </select>
 
                     {/* 별점 선택 select */}
@@ -97,14 +98,14 @@ function App() {
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
                     >
-                        <option value="3">별점 3점</option>
                         <option value="1">별점 1점</option>
                         <option value="2">별점 2점</option>
+                        <option value="3">별점 3점</option>
                         <option value="4">별점 4점</option>
                         <option value="5">별점 5점</option>
                     </select>
 
-                    <button type="submit" style={{ padding: "4px 10px", cursor: "pointer" }}>
+                    <button type="submit" style={{ padding: "4px 8px", cursor: "pointer" }}>
                         추가
                     </button>
                 </form>
@@ -129,6 +130,10 @@ function App() {
                                 padding: "20px",
                                 width: "200px",
                                 boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+                                // 체크했을 때 카드 전체 요소가 블라인드(흐림/배경색 변경) 처리되도록 수정
+                                opacity: movie.completed ? 0.7 : 1,
+                                backgroundColor: movie.completed ? "#f9f9f9" : "#ffffff",
+                                transition: "all 0.2s ease-in-out",
                             }}
                         >
                             {/* 체크 완료 시 제목, 장르, 별점 영역만 흐려지도록 블라인드 처리 */}
@@ -156,7 +161,7 @@ function App() {
 
                             <button
                                 onClick={() => handleDeleteMovie(index)}
-                                style={{ padding: "3px 8px", cursor: "pointer" }}
+                                style={{ padding: "2px 8px", cursor: "pointer" }}
                             >
                                 삭제
                             </button>
