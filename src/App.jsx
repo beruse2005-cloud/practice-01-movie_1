@@ -37,7 +37,7 @@ function App() {
 
     // 영화 삭제 핸들러 (handleDeleteMovie)
     const handleDeleteMovie = (index) => {
-        const updatedList = movieList.filter((_, i) => i !== index);
+        const updatedList = movieList.filter((item, i) => i !== index);
         setMovieList(updatedList);
     };
 
@@ -137,7 +137,7 @@ function App() {
                             }}
                         >
                             {/* 체크 완료 시 제목, 장르, 별점 영역만 흐려지도록 블라인드 처리 */}
-                            <div style={{ opacity: movie.completed ? 0.35 : 1, transition: "opacity 0.2s" }}>
+                            <div style={{ opacity: movie.completed ? 0.8 : 1, transition: "opacity 0.2s" }}>
                                 <h4 style={{ margin: "0 0 10px 0" }}>{movie.title}</h4>
                                 <p style={{ margin: "5px 0" }}>장르: {movie.genre}</p>
                                 <p style={{ margin: "5px 0" }}>
