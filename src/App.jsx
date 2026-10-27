@@ -10,6 +10,12 @@ function App() {
     const genres = ["액션", "코미디", "드라마", "SF", "공포", "멜로"];
     const ratings = ["5", "4", "3", "2", "1"];
 
+    const handleChangeTitle = (event) => setTitle(event.target.value);
+
+    const handleChangeGenre = (event) => setGenre(event.target.value);
+
+    const handleChangeRating = (event) => setRating(event.target.value);
+
     return <>
         <h2>나의 영화 기록장</h2>
         <fieldset>
@@ -17,13 +23,21 @@ function App() {
             <form>
                 <input
                     placeholder={"영화 제목"}
+                    onChange={handleChangeTitle}
+                    value={title}
                 />
-                <select>
+                <select
+                    onChange={handleChangeGenre}
+                    value={genre}
+                >
                     {genres.map((item, index) => {
                         return <option key={index} value={item}>{item}</option>
                     })}
                 </select>
-                <select>
+                <select
+                    onChange={handleChangeRating}
+                    value={rating}
+                >
                     {ratings.map((item, index) => {
                         return <option key={index} value={item}>별점 {item}점</option>
                     })}
