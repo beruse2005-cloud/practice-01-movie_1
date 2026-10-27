@@ -3,7 +3,7 @@ import { useState } from "react";
 function App() {
     // 입력값을 관리하는 state
     const [title, setTitle] = useState(""); // 영화 제목
-    const [genre, setGenre] = useState(""); // 장르
+    const [genre, setGenre] = useState("액션"); // 장르
     const [rating, setRating] = useState("3"); // 별점 (기본값 별점 3점)
 
     // 영화 목록을 관리하는 state (초기 데이터 없음)
@@ -31,7 +31,7 @@ function App() {
 
         // 인풋 값 초기화
         setTitle("");
-        setGenre("");
+        setGenre("액션");
         setRating("3");
     };
 
