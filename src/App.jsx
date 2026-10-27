@@ -89,7 +89,7 @@ function App() {
             </form>
         </fieldset>
         <h3>전체 {movies.length}편 / 감상 완료 {totalWatched}편</h3>
-        <div>
+        <div style={{display: "flex", flexWrap: "wrap", gap: "12px"}}>
             {movies.map((item, index) => {
                 // let stars = "";
                 // if (item.rating === "5") {
@@ -107,8 +107,14 @@ function App() {
                 // repeat(숫자) 메서드 : 제공된 string을 숫자만큼 반복
 
                 return (
-                    <div>
-                        <h4>{item.title}</h4>
+                    <div style={{
+                        width: "200px",
+                        padding: "12px",
+                        border: "1px solid #ccc",
+                        borderRadius: "8px",
+                        opacity: item.watched ? 0.5 : 1,
+                    }}>
+                        <h4 style={{ margin: "0 0 8px"}}>{item.title}</h4>
                         <div>장르: {item.genre}</div>
                         <div>{"★".repeat(Number(item.rating)) + "☆".repeat(5 - Number(item.rating))}</div>
                         <label>
