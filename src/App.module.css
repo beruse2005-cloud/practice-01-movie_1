@@ -45,7 +45,6 @@
 
 .form {
     display: flex;
-    gap: 8px; /* 입력 요소들 사이의 간격 추가 */
 }
 
 .input,
