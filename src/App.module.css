@@ -1,3 +1,6 @@
+/* ==========================
+   1. 전체 레이아웃 및 컨테이너
+   ========================== */
 .container {
     width: 100%;
     max-width: 685px;
@@ -23,12 +26,15 @@
     unicode-bidi: isolate;
 }
 
+/* ==========================
+   2. 입력 폼 영역 (Fieldset, Form, Input, Select)
+   ========================== */
 .fieldset {
     border: 2px solid #e5e7eb;
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 24px;
-    background-color: #f4f5F6;
+    background-color: #f4f5f6;
 }
 
 .legend {
@@ -39,6 +45,7 @@
 
 .form {
     display: flex;
+    gap: 8px; /* 입력 요소들 사이의 간격 추가 */
 }
 
 .input,
@@ -53,7 +60,6 @@
     background-color: white;
 }
 
-/* 만약 각각의 너비 비율을 다르게 하고 싶다면 아래처럼 개별 설정도 가능합니다 */
 .input {
     flex: 2; /* 영화 제목 입력창은 조금 더 넓게 */
 }
@@ -61,15 +67,18 @@
 .select,
 .selectTo {
     flex: 1; /* 장르와 별점은 좁게 */
-    /* 또는 고정 너비를 주고 싶다면 flex 대신 width를 주셔도 됩니다 (예: width: 100px;) */
 }
 
+/* 쉼표 빠진 부분 수정 완료 */
 .input:focus,
-.select:focus
-.selectTo:focus{
+.select:focus,
+.selectTo:focus {
     border-color: #3b82f6;
 }
 
+/* ==========================
+   3. 버튼 스타일 (추가, 삭제)
+   ========================== */
 .submitButton {
     padding: 12px 20px;
     background-color: #3b82f6;
@@ -85,25 +94,6 @@
     background-color: #2563eb;
 }
 
-.movieContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.containerBox {
-    width: 200px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    opacity: 1; /* 기본 상태 */
-    transition: opacity 0.2s ease;
-}
-
-.containerBox.watched {
-    opacity: 0.5;
-}
-
 .deleteButton {
     padding: 6px 12px;
     background-color: #fee2e2;
@@ -115,36 +105,59 @@
     transition: background-color 0.2s;
 }
 
-.movieTitle {
-    margin: 0 0 8px 0;
-    font-size: 1.1rem; /* 필요하다면 글자 크기나 색상도 여기서 조절할 수 있습니다 */
+.deleteButton:hover {
+    background-color: #fecaca;
 }
 
-/* 장르 텍스트 */
+/* ==========================
+   4. 영화 카드 리스트 및 아이템
+   ========================== */
+.movieContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.containerBox {
+    width: 200px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white; /* 투명도 적용 시 겹침 방지 */
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.containerBox.watched {
+    opacity: 0.5;
+}
+
+/* ==========================
+   5. 카드 내부 텍스트 및 상세 요소
+   ========================== */
+.movieTitle {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+}
+
 .movieGenre {
     font-size: 0.9rem;
     color: #4b5563;
     margin-bottom: 6px;
 }
 
-/* 별점 영역 */
 .movieRating {
-    color: #f59e0b; /* 별점 색상을 예쁜 노란색/금색으로 주면 좋습니다! */
+    color: #f59e0b; /* 별점 노란색 포인트 */
     font-size: 0.95rem;
     margin-bottom: 10px;
 }
 
-/* 감상완료 체크박스 라벨 영역 */
 .watchedLabel {
     display: flex;
     align-items: center;
-    gap: 6px; /* 체크박스와 글자 사이 간격 */
+    gap: 6px;
     font-size: 0.9rem;
     color: #374151;
     cursor: pointer;
     margin-bottom: 12px;
-}
-
-.deleteButton:hover {
-    background-color: #fecaca;
 }
