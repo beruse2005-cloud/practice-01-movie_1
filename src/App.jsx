@@ -20,15 +20,14 @@ function App() {
     const handleOnSubmit = event => {
         event.preventDefault();
 
-        // 저장하지 말아야 되는 상황에 대한 처리
         const parseTitle = title.trim();
         if (parseTitle === "") {
             return;
         }
 
         const newMovie = {
-            title: parseTitle, // key와 value의 스펠링이 달라서 써줘야 됨
-            genre, // key와 value의 스펠링이 같으면 생략 가능
+            title: parseTitle,
+            genre,
             rating,
             watched: false,
         };
@@ -40,7 +39,6 @@ function App() {
     };
 
     const handleToggleWatched = index => {
-        // setMovies를 통해 새로운 배열을 저장해야 하니까
         const newMovies = movies.map((movie, i) => {
             if (index !== i) {
                 return movie;
@@ -55,7 +53,6 @@ function App() {
         setMovies(newMovies);
     };
 
-    // const totalWatched = movies.filter((movie) => movie.watched).length;
     const totalWatched = movies.reduce((sum, item) => {
         return item.watched ? sum + 1 : sum;
     }, 0);
@@ -66,12 +63,15 @@ function App() {
             <fieldset className={styles.fieldset}>
                 <legend className={styles.legend}>영화 추가</legend>
                 <form className={styles.form} onSubmit={handleOnSubmit}>
+                    {/* value={title} 추가됨 */}
                     <input
                         className={styles.input}
                         placeholder={"영화 제목"}
+                        value={title}
                         onChange={handleChangeTitle}
                     />
-                    <select className={styles.select} onChange={handleChangeGenre}>
+                    {/* value={genre} 추가됨 */}
+                    <select className={styles.select} value={genre} onChange={handleChangeGenre}>
                         {genres.map((item, index) => {
                             return (
                                 <option key={index} value={item}>
@@ -80,7 +80,8 @@ function App() {
                             );
                         })}
                     </select>
-                    <select className={styles.selectTo} onChange={handleChangeRating} >
+                    {/* value={rating} 추가됨 */}
+                    <select className={styles.selectTo} value={rating} onChange={handleChangeRating} >
                         {ratings.map((item, index) => {
                             return (
                                 <option key={index} value={item}>
@@ -98,7 +99,9 @@ function App() {
             <div className={styles.movieContainer}>
                 {movies.map((item, index) => {
                     return (
+                        /* key={index} 추가됨[span_1](start_span)[span_1](end_span) */
                         <div
+                            key={index}
                             className={`${styles.containerBox} ${item.watched ? styles.watched : ""}`}>
                             <h4 className={styles.movieTitle}>{item.title}</h4>
                             <div className={styles.movieGenre}>장르: {item.genre}</div>
