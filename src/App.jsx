@@ -67,11 +67,14 @@ function App() {
                     <input
                         className={styles.input}
                         placeholder={"영화 제목"}
-                        value={title}
                         onChange={handleChangeTitle}
+                        value={title}
                     />
                     {/* value={genre} 추가됨 */}
-                    <select className={styles.select} value={genre} onChange={handleChangeGenre}>
+                    <select className={styles.select}
+                            onChange={handleChangeGenre}
+                            value={genre}
+                    >
                         {genres.map((item, index) => {
                             return (
                                 <option key={index} value={item}>
@@ -81,7 +84,11 @@ function App() {
                         })}
                     </select>
                     {/* value={rating} 추가됨 */}
-                    <select className={styles.selectTo} value={rating} onChange={handleChangeRating} >
+                    <select
+                        className={styles.selectTo}
+                        onChange={handleChangeRating}
+                        value={rating}
+                    >
                         {ratings.map((item, index) => {
                             return (
                                 <option key={index} value={item}>
@@ -90,7 +97,9 @@ function App() {
                             );
                         })}
                     </select>
-                    <button className={styles.submitButton} type={"submit"}>추가</button>
+                    <button className={styles.submitButton} type={"submit"}>
+                        추가
+                    </button>
                 </form>
             </fieldset>
             <h3 className={styles.titleText}>
